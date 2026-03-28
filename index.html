@@ -8,65 +8,62 @@
 
 <body>
 
-   <div class="sidebar">
-  <h2>Login</h2>
-  
-  <input type="email" placeholder="Email">
-  <input type="password" placeholder="Password">
-  
-  <button>Masuk</button>
-</div>
+  <!-- SIDEBAR LOGIN -->
+  <div class="sidebar">
+    <h2>Login</h2>
+    
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    
+    <button onclick="login()">Login</button>
+    <button onclick="register()">Register</button>
+  </div>
+
   <!-- HEADER -->
   <header class="header">
     <h1>⚡ HyperStore</h1>
     <p>Top Up Game Murah & Cepat</p>
   </header>
 
-  <!-- BANNER -->
-  <div class="banner">
-    🔥 Promo Spesial! Top Up Murah Hari Ini 🔥
-  </div>
-
   <!-- GAME LIST -->
   <div class="game-list">
-
-    <div class="card" onclick="location.href='Mobile Legends.html'">
-      <img src="ml.jpg">
-      <p>Mobile Legends</p>
-    </div>
-
-    <div class="card" onclick="location.href='Free Fire.html'">
-      <img src="ff.jpg">
-      <p>Free Fire</p>
-    </div>
-
-    <div class="card" onclick="location.href='Roblox.html'">
-      <img src="roblox.jpg">
-      <p>Roblox</p>
-    </div>
-
-    <div class="card" onclick="location.href='pubg.html'">
-      <img src="pubg.jpg">
-      <p>Pubg</p>
-    </div>
-
-    <div class="card" onclick="location.href='Genshin Impact.html'">
-      <img src="gi.jpg">
-      <p>Genshin Impact</p>
-    </div>
-
-    <div class="card" onclick="location.href='Resident Evil.html'">
-      <img src="RE.jpg">
-      <p>Resident Evil</p>
-    </div>
-
+    <div class="card"><img src="ml.jpg"><p>Mobile Legends</p></div>
+    <div class="card"><img src="ff.jpg"><p>Free Fire</p></div>
+    <div class="card"><img src="roblox.jpg"><p>Roblox</p></div>
   </div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>💳 Pembayaran: GoPay • Dana • QRIS</p>
-    <p>⚡ Proses Cepat & Aman</p>
-  </footer>
+  <!-- 🔥 FIREBASE SCRIPT (HARUS DI ATAS JS) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <!-- 🔥 SCRIPT LOGIN -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBKg0rrxZhfYn_8KMXKUx2NZgyBRB7zOfM",
+      authDomain: "hyperstore-895f4.firebaseapp.com",
+      projectId: "hyperstore-895f4",
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    function register() {
+      const email = document.getElementById("email").value;
+      const pass = document.getElementById("password").value;
+
+      auth.createUserWithEmailAndPassword(email, pass)
+        .then(() => alert("Akun berhasil dibuat"))
+        .catch(err => alert(err.message));
+    }
+
+    function login() {
+      const email = document.getElementById("email").value;
+      const pass = document.getElementById("password").value;
+
+      auth.signInWithEmailAndPassword(email, pass)
+        .then(() => alert("Login berhasil"))
+        .catch(err => alert(err.message));
+    }
+  </script>
 
 </body>
 </html>
