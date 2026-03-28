@@ -152,3 +152,33 @@ body {
   flex-direction: column;
   gap: 15px;
 }
+.sidebar input {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+.sidebar button {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #00eaff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.sidebar button:hover {
+  background: #00c8d6;
+}
+body {
+  margin-left: 250px;
+}
+.sidebar h2 {
+  color: #00eaff;
+  text-shadow: 0 0 10px #00eaff;
+}
+.sidebar {
+  transform: translateX(0);
+  transition: 0.3s;
+}
